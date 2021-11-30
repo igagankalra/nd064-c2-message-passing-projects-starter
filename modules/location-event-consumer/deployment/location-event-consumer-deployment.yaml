@@ -30,7 +30,7 @@ spec:
         service: svc-api-location-consumer
     spec:
       containers:
-      - image: igagankalra/udaconnect-location-event-consumer:latest
+      - image: igagankalra/udaconnect-location-events-consumer:latest
         name: udaconnect-location-event-consumer
         imagePullPolicy: Always
         env:
