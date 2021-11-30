@@ -1,0 +1,30 @@
+### Message format for gRPC
+
+syntax = "proto3";
+
+message EventCoordinatesMessage {
+  int32 userId = 1;
+  int32 latitude = 2;
+  int32 longitude = 3;
+}
+
+### Make sure you have installed all the dependencies in modules\location-event-producer\requirements.txt 
+
+
+gagandeep.singh5@del1-lhp-n68299 MINGW64 /d/udacity_suse/nd064-c2-message-passing-projects-starter/modules/location-event-producer (master)
+$ python grpc_data_sender.py
+Sending coordinates......
+Traceback (most recent call last):
+  File "D:\udacity_suse\nd064-c2-message-passing-projects-starter\modules\location-event-producer\grpc_data_sender.py", line 13, in <module>
+    user_loc = event_coordinates_pb2.EventCoordinatesMessage(
+TypeError: 39.5 has type float, but expected one of: int, long
+
+gagandeep.singh5@del1-lhp-n68299 MINGW64 /d/udacity_suse/nd064-c2-message-passing-projects-starter/modules/location-event-producer (master)
+$ python grpc_data_sender.py
+Sending coordinates......
+userId: 2
+latitude: -10
+longitude: 39
+ userId: 8
+latitude: -10
+longitude: 40

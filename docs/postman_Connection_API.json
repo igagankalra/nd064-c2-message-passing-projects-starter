@@ -1,0 +1,110 @@
+{
+	"info": {
+		"_postman_id": "9c614f77-dca2-4e4c-b9bb-1d3c55d0ac8d",
+		"name": "Connection API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get connection data resource",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/persons/:person_id/connection?distance=ipsum&end_date=ipsum&start_date=ipsum",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"persons",
+						":person_id",
+						"connection"
+					],
+					"query": [
+						{
+							"key": "distance",
+							"value": "ipsum",
+							"description": "Distance between users"
+						},
+						{
+							"key": "end_date",
+							"value": "ipsum",
+							"description": "Ending date"
+						},
+						{
+							"key": "start_date",
+							"value": "ipsum",
+							"description": "Starting date"
+						}
+					],
+					"variable": [
+						{
+							"key": "person_id",
+							"value": "ipsum",
+							"description": "(Required) "
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/persons/:person_id/connection?distance=ipsum&end_date=ipsum&start_date=ipsum",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"persons",
+								":person_id",
+								"connection"
+							],
+							"query": [
+								{
+									"key": "distance",
+									"value": "ipsum"
+								},
+								{
+									"key": "end_date",
+									"value": "ipsum"
+								},
+								{
+									"key": "start_date",
+									"value": "ipsum"
+								}
+							],
+							"variable": [
+								{
+									"key": "person_id"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "text",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/",
+			"type": "string"
+		}
+	]
+}
