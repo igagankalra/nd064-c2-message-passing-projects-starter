@@ -1,0 +1,10 @@
+
+- Location ingesting --> There can be lot of location data at any conference for any given users, So, to handle all the location load we will be using kafka producer with grpc.
+
+- Location Storing --> Location data produced by the producer is saved to the DB using the Kafka Consumer over grpc.
+
+- Person Mircoservice --> Uses REST arch to allow person operations.
+
+- Connections Mircoservice --> It also uses Rest arch to retrieve Connections.
+
+- Front-End Mircoservice --> it call s the Persons and Connections endpoints to fetch the data on the UI.
