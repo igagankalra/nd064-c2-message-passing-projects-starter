@@ -31,7 +31,7 @@ spec:
         service: api-location-event
     spec:
       containers:
-      - image: jasonwee/udaconnect-location-event-producer:latest
+      - image: igagankalra/udaconnect-location-events-producer:latest
         name: udaconnect-location-event-producer
         imagePullPolicy: Always
         env:

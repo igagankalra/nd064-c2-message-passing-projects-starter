@@ -11,10 +11,10 @@ from kafka import KafkaProducer
 kafka_url = os.environ["KAFKA_URL"]
 kafka_topic = os.environ["KAFKA_TOPIC"]
 
-logging.info('connecting to kafka ', kafka_url)
-print('connecting to kafka ', kafka_url)
-logging.info('connecting to kafka topic ', kafka_topic)
-print('connecting to kafka topic ', kafka_topic)
+logging.info('Connecting kafka', kafka_url)
+print('connecting to the kafka', kafka_url)
+logging.info('connecting  kafka topic', kafka_topic)
+print('connecting to the kafka topic', kafka_topic)
 
 producer = KafkaProducer(bootstrap_servers=kafka_url)
 
