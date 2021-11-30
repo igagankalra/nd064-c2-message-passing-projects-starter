@@ -57,7 +57,7 @@ spec:
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: db-connections-secret
+              name: db-secret
               key: DB_PASSWORD
         - name: KAFKA_URL
           valueFrom:

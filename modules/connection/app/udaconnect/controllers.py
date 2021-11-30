@@ -14,9 +14,9 @@ api = Namespace("UdaConnect", description="Connections via location.")  # noqa
 
 
 @api.route("/persons/<person_id>/connection")
-@api.param("start_date", "Lower bound of date range", _in="query")
-@api.param("end_date", "Upper bound of date range", _in="query")
-@api.param("distance", "Proximity to a given user in meters", _in="query")
+@api.param("start_date", "Starting date", _in="query")
+@api.param("end_date", "Ending date", _in="query") 
+@api.param("distance", "Distance between users", _in="query")
 class ConnectionDataResource(Resource):
     @responds(schema=ConnectionSchema(many=True))
     def get(self, person_id) -> ConnectionSchema:

@@ -75,7 +75,7 @@ spec:
           - name: POSTGRES_PASSWORD
             valueFrom:
               secretKeyRef:
-                name: db-connections-secret
+                name: db-secret
                 key: DB_PASSWORD
           volumeMounts:
             - mountPath: /var/lib/connectionsdb/data

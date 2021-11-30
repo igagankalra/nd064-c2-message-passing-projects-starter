@@ -26,5 +26,5 @@ response_1 = stub.Create(user_coordinates)
 response_2 = stub.Create(user_coordinates_2)
 
 
-print("Coordinates sent...")
+print("Coordinates send......")
 print(user_coordinates, user_coordinates_2)
