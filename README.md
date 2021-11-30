@@ -163,8 +163,26 @@ kafka-release-0                   0/1     Running   0          4m35s
 Afterwards, you can test that `kubectl` works by running a command like `kubectl describe services`. It should not return any errors.
 
 ### Steps
-1. `kubectl apply -f deployment/db-configmap.yaml` - Set up environment variables for the pods
-2. `kubectl apply -f deployment/db-secret.yaml` - Set up secrets for the pods
+1.  - Set up Persons Microservice -- 
+```shell
+kubectl apply -f modules/person/deploymen/
+```
+  Once the Postgress Person Pod is up and running, populate the DB 
+```shell
+cd modules/person/
+sh scripts/run_db_command.sh  postgres-person-7d66bb9d6b-zdcq
+```  
+
+
+2. Set up Connections Mircoservice -- 
+```shell
+kubectl apply -f modules/connection/deployment/ 
+```
+  Once the Postgress Connection Pod is up and running, populate the DB 
+```shell
+cd modules/connection/
+sh scripts/run_db_command.sh  postgres-person-7d66bb9d6b-zdcq
+```  
 3. `kubectl apply -f deployment/postgres.yaml` - Set up a Postgres database running PostGIS
 4. `kubectl apply -f deployment/udaconnect-api.yaml` - Set up the service and deployment for the API
 5. `kubectl apply -f deployment/udaconnect-app.yaml` - Set up the service and deployment for the web app
