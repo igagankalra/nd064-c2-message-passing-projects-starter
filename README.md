@@ -148,17 +148,16 @@ To create a pod that you can use as a Kafka client run the following commands:
 
 ```
 
-wait a bit
-
-**3. ckeck that kafka is running:**
+**3. Verify that kafka is running:**
 
 you should see something similar to the below
 
 ```shell
-$ kubectl get pods
-NAME                        READY   STATUS    RESTARTS   AGE
-kafka-release-zookeeper-0   1/1     Running   0          1m10s
-kafka-release-0             1/1     Running   1          1m10s
+master:/home/vagrant # kubectl get po
+NAME                              READY   STATUS    RESTARTS   AGE
+kafka-release-zookeeper-0         1/1     Running   0          4m35s
+kafka-release-0                   0/1     Running   0          4m35s
+```
 
 
 Afterwards, you can test that `kubectl` works by running a command like `kubectl describe services`. It should not return any errors.
