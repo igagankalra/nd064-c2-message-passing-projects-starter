@@ -73,6 +73,94 @@ users:
 ```
 Type `exit` to exit the virtual OS and you will find yourself back in your computer's session. Create the file (or replace if it already exists) `~/.kube/config` and paste the contents of the `k3s.yaml` output here.
 
+#### SETUP KAFKA
+**1. Install Helm in the VM.**
+```shell
+master:/home/vagrant # helm repo add bitnami https://charts.bitnami.com/bitnami
+bash: helm: command not found
+master:/home/vagrant # curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+master:/home/vagrant # chmod 700 get_helm.sh
+master:/home/vagrant # ./get_helm.sh
+Downloading https://get.helm.sh/helm-v3.7.1-linux-amd64.tar.gz
+Verifying checksum... Done.
+Preparing to install helm into /usr/local/bin
+helm installed into /usr/local/bin/helm
+master:/home/vagrant #
+```
+
+**2. Install Kafka using the Helm Charts.**
+```shell
+$ helm repo add bitnami https://charts.bitnami.com/bitnami
+
+$ helm repo list
+
+NAME        	URL                                           
+bitnami     	https://charts.bitnami.com/bitnami            
+```
+
+**2. Install the kafka helm chart**
+```shell
+master:/home/vagrant # helm repo add bitnami https://charts.bitnami.com/bitnami
+"bitnami" has been added to your repositories
+master:/home/vagrant # helm repo list
+NAME    URL
+bitnami https://charts.bitnami.com/bitnami
+master:/home/vagrant # export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+master:/home/vagrant # helm install kafka-release bitnami/kafka
+NAME: kafka-release
+LAST DEPLOYED: Tue Nov 30 05:15:21 2021
+NAMESPACE: default
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+CHART NAME: kafka
+CHART VERSION: 14.4.3
+APP VERSION: 2.8.1
+
+** Please be patient while the chart is being deployed **
+
+Kafka can be accessed by consumers via port 9092 on the following DNS name from within your cluster:
+
+    kafka-release.default.svc.cluster.local
+
+Each Kafka broker can be accessed by producers via port 9092 on the following DNS name(s) from within your cluster:
+
+    kafka-release-0.kafka-release-headless.default.svc.cluster.local:9092
+
+To create a pod that you can use as a Kafka client run the following commands:
+
+    kubectl run kafka-release-client --restart='Never' --image docker.io/bitnami/kafka:2.8.1-debian-10-r57 --namespace default --command -- sleep infinity
+    kubectl exec --tty -i kafka-release-client --namespace default -- bash
+
+    PRODUCER:
+        kafka-console-producer.sh \
+
+            --broker-list kafka-release-0.kafka-release-headless.default.svc.cluster.local:9092 \
+            --topic test
+
+    CONSUMER:
+        kafka-console-consumer.sh \
+
+            --bootstrap-server kafka-release.default.svc.cluster.local:9092 \
+            --topic test \
+            --from-beginning
+
+```
+
+wait a bit
+
+**3. ckeck that kafka is running:**
+
+you should see something similar to the below
+
+```shell
+$ kubectl get pods
+NAME                        READY   STATUS    RESTARTS   AGE
+kafka-release-zookeeper-0   1/1     Running   0          1m10s
+kafka-release-0             1/1     Running   1          1m10s
+
+
 Afterwards, you can test that `kubectl` works by running a command like `kubectl describe services`. It should not return any errors.
 
 ### Steps
